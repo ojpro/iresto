@@ -15,7 +15,7 @@ use App\Http\Controllers\MainController;
 
 Route::middleware(['auth'])->group(function () {
 	Route::get('/', [MainController::class,'home']);
-	Route::view('/dashboard','dashboard');
+	Route::view('/dashboard','dashboard')->name('dashboard');
 });
 
 require __DIR__.'/auth.php';
