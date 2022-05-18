@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,11 @@ class AdminFactory extends Factory
     public function definition()
     {
         return [
-            //
+			'full_name'=>$this->faker->name(),
+	        'number'=>$this->faker->phoneNumber(),
+			'username'=>$this->faker->userName(),
+	        'email'=>$this->faker->email(),
+	        'password'=> Hash::make('password')
         ];
     }
 }

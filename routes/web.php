@@ -14,7 +14,7 @@ use App\Http\Controllers\MainController;
 */
 
 Route::middleware(['auth'])->group(function () {
-	Route::get('/', [MainController::class,'Dashboard']);
+	Route::get('/', [MainController::class,'home']);
 	Route::view('/dashboard','dashboard');
 });
 
