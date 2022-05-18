@@ -28,7 +28,36 @@ class MainController extends Controller
 	 * @return \Illuminate\Http\JsonResponse
 	 */
 
-	public function home(){
-		return "hey";
+	public function login(Request $request)
+	{
+		$user = User::where('email', $request->email)->first();
+		if (($user != null) && Hash::check($request->password, $user->password)) {
+			return response()->json('success');
+		} else {
+			return response()->json(['message' => 'invalid credentials']);
+		}
+	}
+
+	/**
+	 * Find Client by his id
+	 *
+	 * @param Request $request
+	 *
+	 * @return User
+	 */
+	public function find(Request $request)
+	{
+		return User::find($request->id);
+	}
+
+	/**
+	 * Get List of all clients
+	 *
+	 * @return User
+	 */
+
+	public function all_clients()
+	{
+		return User::all();
 	}
 }
