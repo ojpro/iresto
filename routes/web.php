@@ -14,8 +14,20 @@ use App\Http\Controllers\MainController;
 */
 
 Route::middleware(['auth'])->group(function () {
+
 	Route::get('/', [MainController::class,'home']);
-	Route::view('/dashboard','dashboard')->name('dashboard');
+
+	Route::prefix('/dashboard')->group(function () {
+
+		/* Dashboard */
+		Route::view('/','dashboard')->name('dashboard');
+
+		/* Plates */
+		Route::resource('/plates', \App\Http\Controllers\PlateController::class);
+
+		/* Plates Categories */
+		Route::resource('/categories', \App\Http\Controllers\CategoryController::class)->except(['create','edit']);
+	});
 });
 
 require __DIR__.'/auth.php';

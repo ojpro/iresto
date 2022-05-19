@@ -1,16 +1,6 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./node_modules/alpinejs/dist/module.esm.js":
-/*!**************************************************!*\
-  !*** ./node_modules/alpinejs/dist/module.esm.js ***!
-  \**************************************************/
-/***/ (() => {
-
-throw new Error("Module build failed: Error: ENOENT: no such file or directory, open '/home/ojpro/Work/Projects/iresto/node_modules/alpinejs/dist/module.esm.js'");
-
-/***/ }),
-
 /***/ "./node_modules/axios/index.js":
 /*!*************************************!*\
   !*** ./node_modules/axios/index.js ***!
@@ -2174,12 +2164,12 @@ module.exports = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var alpinejs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! alpinejs */ "./node_modules/alpinejs/dist/module.esm.js");
+Object(function webpackMissingModule() { var e = new Error("Cannot find module 'alpinejs'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
-window.Alpine = alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"];
-alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].start();
+window.Alpine = Object(function webpackMissingModule() { var e = new Error("Cannot find module 'alpinejs'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+Object(function webpackMissingModule() { var e = new Error("Cannot find module 'alpinejs'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())();
 
 /***/ }),
 
