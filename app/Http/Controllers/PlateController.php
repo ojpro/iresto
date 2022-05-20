@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Plate;
 use App\Models\PlateImage;
 use Illuminate\Http\Request;
+use App\Events\PlateCreated;
 
 class PlateController extends Controller
 {
@@ -60,18 +61,9 @@ class PlateController extends Controller
 			'description' => $request->description
 		]);
 
-		/* TODO: DRY & use queues */
-
 		if ($request->hasFile('images')) {
 			foreach ($request->images as $image) {
-				$name = 'plate_' . time() . '.' . $image->getClientOriginalExtension();
-				if ($image->move(public_path('images'), $name)) {
-
-					PlateImage::create([
-						'plate_id' => $plate->id,
-						'image_url' => 'images/' . $name
-					]);
-				}
+				PlateCreated::dispatch($image,$plate->id);
 			}
 		}
 
@@ -137,14 +129,7 @@ class PlateController extends Controller
 
 		if ($request->hasFile('images')) {
 			foreach ($request->images as $image) {
-				$name = 'plate_' . time() . rand(1, 1000) . '.' . $image->getClientOriginalExtension();
-				if ($image->move(public_path('images'), $name)) {
-
-					PlateImage::create([
-						'plate_id' => $id,
-						'image_url' => 'images/' . $name
-					]);
-				}
+				PlateCreated::dispatch($image,$id);
 			}
 		}
 
