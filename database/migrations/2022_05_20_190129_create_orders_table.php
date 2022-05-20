@@ -13,15 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('order_details', function (Blueprint $table) {
+        Schema::create('orders', function (Blueprint $table) {
             $table->id();
-	        $table->smallInteger('quantity');
-	        $table->foreignId('plate_id')->constrained();
 			$table->foreignId('client_id')->constrained();
-			$table->dateTime('boxed_at');
-			$table->dateTime('arrived_at');
-			$table->enum('status',['delivered','canceled','pending'])->default('pending');
-            $table->timestamps();
+	        $table->dateTime('boxed_at');
+	        $table->dateTime('arrived_at');
+	        $table->enum('status',['delivered','canceled','pending'])->default('pending');
+	        $table->timestamps();
         });
     }
 
@@ -32,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('order_details');
+        Schema::dropIfExists('orders');
     }
 };
