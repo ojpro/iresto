@@ -15,11 +15,10 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-			$table->foreignId('client_id')->constrained();
-	        $table->dateTime('boxed_at');
-	        $table->dateTime('arrived_at');
-	        $table->enum('status',['delivered','canceled','pending'])->default('pending');
-	        $table->timestamps();
+	        $table->foreignId('plate_id')->constrained();
+	        $table->smallInteger('quantity');
+	        $table->foreignId('order_details_id')->constrained();
+            $table->timestamps();
         });
     }
 
