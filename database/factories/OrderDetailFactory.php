@@ -17,7 +17,7 @@ class OrderDetailFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'client_id'=>1
         ];
     }
 }
