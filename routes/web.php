@@ -27,6 +27,9 @@ Route::middleware(['auth'])->group(function () {
 
 		/* Plates Categories */
 		Route::resource('/categories', \App\Http\Controllers\CategoryController::class)->except(['create','edit']);
+
+		/* Clients */
+		Route::get('/clients',[\App\Http\Controllers\ClientController::class,'index'])->name('clients.index');
 	});
 });
 
