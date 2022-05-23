@@ -148,4 +148,34 @@ class PlateController extends Controller
 		Plate::where('id', $id)->delete();
 		return redirect()->route('plates.index');
 	}
+
+	/**
+	 * Fetch All plates for API use
+	 *
+	 * @return \Illuminate\Database\Eloquent\Collection
+	 */
+
+	public function fetchAll(): \Illuminate\Database\Eloquent\Collection
+	{
+		return Plate::take(10)->get();
+	}
+
+	/**
+	 * Fetch specific plate by his id
+	 * @param int $id
+	 *
+	 * @return Plate
+	 */
+
+	public function fetch($id){
+		return Plate::findOrFail($id);
+	}
+
+	/**
+	 * Search for plates by category
+	 */
+
+	public function fetchByCategory(string $category){
+		return Plate::where('category_id',$category)->get();
+	}
 }

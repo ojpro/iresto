@@ -32,3 +32,12 @@ Route::prefix('/clients')->group(function () {
 Route::prefix('/orders')->group(function(){
 	Route::post('/create',[OrderDetailController::class,'store']);
 });
+
+
+// Plates
+
+Route::prefix('/plates')->group(function () {
+	Route::get('/',[\App\Http\Controllers\PlateController::class,'fetchAll']);
+	Route::get('/{id}',[\App\Http\Controllers\PlateController::class,'fetch']);
+	Route::get('/category/{category}',[\App\Http\Controllers\PlateController::class,'fetchByCategory']);
+});
