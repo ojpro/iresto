@@ -39,4 +39,9 @@ class ClientController extends Controller
 
 		return response()->json(['message' => $user]);
 	}
+
+	public function delete($id){
+		Client::find($id)->delete();
+		return redirect()->route('clients.index');
+	}
 }

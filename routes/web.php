@@ -30,6 +30,7 @@ Route::middleware(['auth'])->group(function () {
 
 		/* Clients */
 		Route::get('/clients',[\App\Http\Controllers\ClientController::class,'index'])->name('clients.index');
+		Route::delete('/clients/{id}',[\App\Http\Controllers\ClientController::class,'delete'])->name('clients.destroy');
 	});
 });
 

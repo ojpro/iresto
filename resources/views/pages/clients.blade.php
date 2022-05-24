@@ -56,7 +56,7 @@
                                                 </svg>
                                             </a>
                                         </div>
-                                        <form action="{{ route('plates.destroy',$client->id) }}" method="post" class="w-4 mr-2 transform hover:text-red-500 hover:scale-110">
+                                        <form action="{{ route('clients.destroy',$client->id) }}" method="post" class="w-4 mr-2 transform hover:text-red-500 hover:scale-110">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="w-4">
