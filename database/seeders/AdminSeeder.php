@@ -20,9 +20,9 @@ class AdminSeeder extends Seeder
     	DB::table('admins')->insert([
 		
                         'full_name'=>Str::random(10),
-                'number'=>$this->Str::random(10),
-                        'username'=>Str::random(10).'@gmail.com',
-                'email'=>$this->faker->email(),
+                'number'=>Str::random(10),
+                        'username'=>Str::random(10),
+                'email'=>Str::random(10).'@gmail.com',
                 'password'=> Hash::make('password')
         
 	]);
