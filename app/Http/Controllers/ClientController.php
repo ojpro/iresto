@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Hash;
 
 class ClientController extends Controller
 {
+	/**
+	 * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+	 */
 	public function index()
 	{
 		$clients = Client::paginate(15);
@@ -40,8 +43,37 @@ class ClientController extends Controller
 		return response()->json(['message' => $user]);
 	}
 
+	/**
+	 * @param $id
+	 *
+	 * @return \Illuminate\Http\RedirectResponse
+	 */
 	public function delete($id){
 		Client::find($id)->delete();
 		return redirect()->route('clients.index');
+	}
+
+	/**
+	 * Get List of all clients
+	 *
+	 * @return User
+	 */
+
+	public function all_clients()
+	{
+		return Client::all();
+	}
+
+
+	/**
+	 * Find Client by his id
+	 *
+	 * @param Request $request
+	 *
+	 * @return User
+	 */
+	public function find(Request $request)
+	{
+		return Client::find($request->id);
 	}
 }

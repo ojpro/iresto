@@ -38,26 +38,6 @@ class MainController extends Controller
 		}
 	}
 
-	/**
-	 * Find Client by his id
-	 *
-	 * @param Request $request
-	 *
-	 * @return User
-	 */
-	public function find(Request $request)
-	{
-		return User::find($request->id);
-	}
 
-	/**
-	 * Get List of all clients
-	 *
-	 * @return User
-	 */
 
-	public function all_clients()
-	{
-		return User::all();
-	}
 }

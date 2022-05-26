@@ -1,8 +1,6 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\OrderDetailController;
 /*
 |--------------------------------------------------------------------------
@@ -20,10 +18,10 @@ use App\Http\Controllers\OrderDetailController;
 // Client
 
 Route::prefix('/clients')->group(function () {
-	Route::get('/',[\App\Http\Controllers\MainController::class,'all_clients']);
+	Route::get('/',[\App\Http\Controllers\ClientController::class,'all_clients']);
 	Route::post('/register',[\App\Http\Controllers\ClientController::class, 'store']);
 	Route::post('/login',[\App\Http\Controllers\MainController::class, 'login']);
-	Route::get("/{id}",[\App\Http\Controllers\MainController::class,'find'])->where('id','[0-9]+');
+	Route::get("/{id}",[\App\Http\Controllers\ClientController::class,'find'])->where('id','[0-9]+');
 
 });
 
@@ -40,4 +38,11 @@ Route::prefix('/plates')->group(function () {
 	Route::get('/',[\App\Http\Controllers\PlateController::class,'fetchAll']);
 	Route::get('/{id}',[\App\Http\Controllers\PlateController::class,'fetch']);
 	Route::get('/category/{category}',[\App\Http\Controllers\PlateController::class,'fetchByCategory']);
+});
+
+// Categories
+
+Route::prefix('/categories')->group(function () {
+	Route::get('/',[\App\Http\Controllers\CategoryController::class,'all']);
+	Route::get('/{id}',[\App\Http\Controllers\CategoryController::class,'find']);
 });

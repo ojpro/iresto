@@ -100,4 +100,20 @@ class CategoryController extends Controller
         Category::where('id',$id)->delete();
 		return redirect()->back();
     }
+
+	/**
+	 * @return \Illuminate\Database\Eloquent\Collection
+	 */
+    public function all(){
+    	return Category::all();
+    }
+
+	/**
+	 * @param int $id
+	 *
+	 * @return mixed
+	 */
+    public function find(int $id){
+    	return Category::find($id);
+    }
 }
