@@ -22,7 +22,7 @@ class AdminSeeder extends Seeder
                         'full_name'=>Str::random(10),
                 'number'=>Str::random(10),
                         'username'=>Str::random(10),
-                'email'=>Str::'contact@gmail.com',
+                'email'=>'contact@gmail.com',
                 'password'=> Hash::make('password')
         
 	]);
