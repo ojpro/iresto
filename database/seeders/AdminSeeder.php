@@ -4,6 +4,9 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class AdminSeeder extends Seeder
 {
@@ -14,11 +17,11 @@ class AdminSeeder extends Seeder
      */
     public function run()
     {
-    	DB::table('users')->insert([
+    	DB::table('admins')->insert([
 		
-                        'full_name'=>$this->faker->name(),
-                'number'=>$this->faker->phoneNumber(),
-                        'username'=>$this->faker->userName(),
+                        'full_name'=>Str::random(10),
+                'number'=>$this->Str::random(10),
+                        'username'=>Str::random(10).'@gmail.com',
                 'email'=>$this->faker->email(),
                 'password'=> Hash::make('password')
         
