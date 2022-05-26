@@ -80,6 +80,6 @@ class PlateImageController extends Controller
      */
     public function destroy(PlateImage $plateImage)
     {
-        //
+        dd($plateImage);
     }
 }

@@ -1,12 +1,2 @@
-POST http://localhost:8000/api/orders/create
+GET http://localhost:8000/api/plates
 Content-Type: application/json
-
-{
-  "client_id": 1,
-  "orders": [
-    {
-      "plate_id": 1,
-      "quantity": 2
-    }
-  ]
-}
