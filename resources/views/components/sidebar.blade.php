@@ -35,17 +35,14 @@
                     </svg>
 
                     <span class="mx-2 text-2xl font-semibold text-white"
-                    >V-Dashboard</span
+                    >{{ env('APP_NAME') }}</span
                     >
                 </div>
             </div>
 
             <nav class="mt-10">
-                <a
-                        class="flex items-center px-6 py-2 mt-4 duration-200 border-l-4 border-gray-900 text-gray-500 hover:bg-gray-600 hover:bg-opacity-25 hover:text-gray-100"
-
-
-                        href="/dashboard"
+                <a  class="flex items-center px-6 py-2 mt-4 duration-200 text-gray-500 hover:bg-gray-600 hover:bg-opacity-25 hover:text-gray-100 border-l-4 hover:border-gray-300 bg-opacity-25 {{ Request::routeIs('dashboard') ? 'border-gray-500 bg-gray-700' : 'border-gray-900' }}"
+                  href="/dashboard"
                 >
                     <svg
                             class="w-5 h-5"
@@ -66,8 +63,8 @@
                     <span class="mx-4">Dashboard</span>
                 </a>
 
-                <a class="flex items-center px-6 py-2 mt-4 duration-200 border-l-4 border-gray-900 text-gray-500 hover:bg-gray-600 hover:bg-opacity-25 hover:text-gray-100"
-                        href="{{ route('plates.index') }}"
+                <a  class="flex items-center px-6 py-2 mt-4 duration-200 text-gray-500 hover:bg-gray-600 hover:bg-opacity-25 hover:text-gray-100 border-l-4 hover:border-gray-300 bg-opacity-25 {{ Request::routeIs('plates.*') ? 'border-gray-500 bg-gray-700' : 'border-gray-900' }}"
+                    href="{{ route('plates.index') }}"
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" class="ionicon w-5 h-5" viewBox="0 0 512 512">
                         <title>Fast Food</title>
@@ -80,9 +77,8 @@
                     <span class="mx-4">Plates</span>
                 </a>
 
-                <a
-                        class="flex items-center px-6 py-2 mt-4 duration-200 border-l-4 border-gray-900 text-gray-500 hover:bg-gray-600 hover:bg-opacity-25 hover:text-gray-100"
-                        href="{{ route('categories.index') }}"
+                <a class="flex items-center px-6 py-2 mt-4 duration-200 text-gray-500 hover:bg-gray-600 hover:bg-opacity-25 hover:text-gray-100 border-l-4 hover:border-gray-300 bg-opacity-25 {{ Request::routeIs('categories.*') ? 'border-gray-500 bg-gray-700' : 'border-gray-900' }}"
+                   href="{{ route('categories.index') }}"
                 >
                     <svg
                             class="w-5 h-5"
@@ -108,9 +104,8 @@
                 </a>
 
 
-                <a
-                        class="flex items-center px-6 py-2 mt-4 duration-200 border-l-4 border-gray-900 text-gray-500 hover:bg-gray-600 hover:bg-opacity-25 hover:text-gray-100"
-                        href="{{ route('clients.index') }}"
+                <a class="flex items-center px-6 py-2 mt-4 duration-200 text-gray-500 hover:bg-gray-600 hover:bg-opacity-25 hover:text-gray-100 border-l-4 hover:border-gray-300 bg-opacity-25 {{ Request::routeIs('clients.*') ? 'border-gray-500 bg-gray-700' : 'border-gray-900' }}"
+                   href="{{ route('clients.index') }}"
                 >
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
 
