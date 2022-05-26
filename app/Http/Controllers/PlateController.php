@@ -93,7 +93,7 @@ class PlateController extends Controller
 
 		$categories = \App\Models\Category::select(['id', 'label'])->get();
 
-		$plate = Plate::find($id)->with('images');
+		$plate = Plate::find($id)->with('images')->first();
 
 		return view('pages.update-plate')->with([
 			'categories' => $categories,
