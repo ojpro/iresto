@@ -27,11 +27,12 @@
                            value="{{ old('images') }}" type="file" id="formFile" multiple>
                 </div>
             </div>
-            <div class="flex">
+            <div class="flex flex-wrap gap-1">
                 @foreach($plate->images as $image)
-                    <div class="bg-white shadow rounded p-2 my-2 mx-1 relative">
-                        <img src="{{ asset($image->image_url) }}" alt="" class="w-40 h-40">
-                        <div class="absolute inset-0 bg-gray-900 bg-opacity-50 opacity-0 hover:opacity-80 flex justify-center items-center gap-2">
+                    <div class="bg-white shadow rounded p-2 my-2 mx-1 relative h-[25vh] grow group">
+                        <img src="{{ asset($image->image_url) }}" alt=""
+                             class="max-h-full min-w-full align-bottom transition transform group-hover:scale-125">
+                        <div class="absolute inset-0 bg-gray-900 bg-opacity-10 opacity-0 group-hover:opacity-80 flex justify-center items-center gap-2">
                             <a href="{{ asset($image->image_url) }}" title="Display this image" target="_blank"
                                class="text-white hover:text-blue-400 transition">
                                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -42,17 +43,14 @@
                                           d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
                                 </svg>
                             </a>
-                            <form id="deleteImage" action="{{ route('plate-images.destroy',$image) }}" method="post">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="text-white hover:text-red-400 transition" form="deleteImage">
-                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                         xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                              d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
-                                    </svg>
-                                </button>
-                            </form>
+                            <button type="button" class="text-white hover:text-red-400 transition"
+                                    onclick="deletePlateImage({{ $image->id }})">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                          d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                                </svg>
+                            </button>
                         </div>
                     </div>
                 @endforeach
@@ -106,5 +104,26 @@
             </button>
         </form>
     </div>
+    <script>
+        // TODO: fix duplication when selecting an image
+        let deletePlateImage = (id) => {
+            if (confirm('Delete this image?')) {
 
+                // create an xmlhttprequest
+                let xhr = new XMLHttpRequest();
+
+                // set the request url,method
+                xhr.open('DELETE', '/api/plate-images/' + id, true);
+
+                // handle response
+                xhr.onload = function () {
+                    alert(this.responseText);
+                    location.reload()
+                }
+
+                // send response
+                xhr.send();
+            }
+        }
+    </script>
 </x-dashboard-layout>

@@ -28,9 +28,6 @@ Route::middleware(['auth'])->group(function () {
 		/* Plates Categories */
 		Route::resource('/categories', \App\Http\Controllers\CategoryController::class)->except(['create','edit']);
 
-		/* Plate Images */
-		Route::resource('/plate-images',\App\Http\Controllers\PlateImageController::class);
-
 		/* Clients */
 		Route::get('/clients',[\App\Http\Controllers\ClientController::class,'index'])->name('clients.index');
 		Route::delete('/clients/{id}',[\App\Http\Controllers\ClientController::class,'delete'])->name('clients.destroy');

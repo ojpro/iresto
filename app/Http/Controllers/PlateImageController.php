@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Plate;
 use App\Models\PlateImage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use League\CommonMark\Extension\CommonMark\Node\Inline\Strong;
+use Illuminate\Support\Facades\File;
 
 class PlateImageController extends Controller
 {
@@ -72,14 +76,32 @@ class PlateImageController extends Controller
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\PlateImage  $plateImage
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(PlateImage $plateImage)
+	/**
+	 * @param int $id
+	 *
+	 * @return \Illuminate\Http\JsonResponse
+	 */
+
+    public function destroy(int $id)
     {
-        dd($plateImage);
+    	// get the targeted image
+    	$image = PlateImage::find($id);
+    	// check if it found
+    	if($image){
+    		// check if the image is exists in the public directory
+    		if(File::exists($image->image_url)){
+
+    			// delete it from the filesystem
+    			File::delete($image->image_url);
+
+    			// delete the plate image record from the database
+    			$image->delete();
+
+				// return success message
+    			return response()->json('Image Deleted Successfully');
+		    }
+	    }
+		// if not found return failed message
+	    return response()->json('Failed!. Please try again later.');
     }
 }
