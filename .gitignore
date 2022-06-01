@@ -13,3 +13,4 @@ yarn-error.log
 /.idea
 /.vscode
 request_testing.http
+/public/images/plates

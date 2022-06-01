@@ -104,4 +104,16 @@ class PlateImageController extends Controller
 		// if not found return failed message
 	    return response()->json('Failed!. Please try again later.');
     }
+
+    /**
+     * Search for plates images
+     *
+     * @param int $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+
+    public function search(int $id){
+        $images = PlateImage::where('plate_id',$id)->get();
+        return response()->json($images);
+    }
 }
