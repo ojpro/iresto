@@ -30,8 +30,8 @@ class MainController extends Controller
 
 	public function login(Request $request)
 	{
-		$user = User::where('email', $request->email)->get();
-		return response()->json($user);
+		$user = User::where('email', $request->email)->first();
+		return response()->json($request->email);
 		if (($user != null) && Hash::check($request->password, $user->password)) {
 			return response()->json('success');
 		} else {
