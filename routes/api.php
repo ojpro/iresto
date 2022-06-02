@@ -40,6 +40,7 @@ Route::prefix('/plates')->group(function () {
 	Route::get('/{id}', [\App\Http\Controllers\PlateController::class, 'fetch']);
 	Route::get('/category/{category}', [\App\Http\Controllers\PlateController::class, 'fetchByCategory']);
 	Route::get('/{id}/images',[\App\Http\Controllers\PlateImageController::class,'search']);
+	Route::get('/{id}/thumbnail',[\App\Http\Controllers\PlateImageController::class,'thumbnail']);
 });
 
 // Categories

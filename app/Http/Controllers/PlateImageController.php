@@ -116,4 +116,9 @@ class PlateImageController extends Controller
         $images = PlateImage::where('plate_id',$id)->get();
         return response()->json($images);
     }
+
+    public function thumbnail(int $id){
+        $thumbnail = PlateImage::where('plate_id',$id)->first();
+        return response()->json($thumbnail);
+    }
 }
