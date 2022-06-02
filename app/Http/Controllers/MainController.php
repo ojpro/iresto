@@ -30,7 +30,7 @@ class MainController extends Controller
 
 	public function login(Request $request)
 	{
-		$user = User::where('email', $request->email)->first();
+		$user = User::where('email', $request->email)->get();
 		return response()->json($user);
 		if (($user != null) && Hash::check($request->password, $user->password)) {
 			return response()->json('success');
