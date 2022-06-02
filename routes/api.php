@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OrderDetailController;
-
+use App\Http\Controllers\ClientController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -20,7 +20,7 @@ use App\Http\Controllers\OrderDetailController;
 
 Route::prefix('/clients')->group(function () {
 	Route::get('/', [\App\Http\Controllers\ClientController::class, 'all_clients']);
-	Route::post('/register', [\App\Http\Controllers\ClientController::class, 'store']);
+	Route::post('/register', [ClientController::class,'store']);
 	Route::post('/login', [\App\Http\Controllers\MainController::class, 'login']);
 	Route::get("/{id}", [\App\Http\Controllers\ClientController::class, 'find'])->where('id', '[0-9]+');
 
