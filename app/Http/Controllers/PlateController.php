@@ -18,6 +18,10 @@ class PlateController extends Controller
 	{
 		$plates = Plate::with('category')->paginate(10);
 
+        foreach ($plates as $plate){
+            $plate->thumbnail = $plate->thumbnail();
+        }
+
 		return view('pages.plates')->with(['plates' => $plates]);
 	}
 
@@ -157,7 +161,12 @@ class PlateController extends Controller
 
 	public function fetchAll(): \Illuminate\Database\Eloquent\Collection
 	{
-		return Plate::take(10)->get();
+	    $plates = Plate::take(10)->get();
+
+        foreach ($plates as $plate){
+            $plate->thumbnail = $plate->thumbnail();
+        }
+		return $plates;
 	}
 
 	/**

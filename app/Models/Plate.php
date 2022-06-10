@@ -22,4 +22,7 @@ class Plate extends Model
 	public function images(){
 		return $this->hasMany(PlateImage::class);
 	}
+	public function  thumbnail(){
+	    return $this->images()->first()->image_url;
+    }
 }
