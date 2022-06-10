@@ -26,7 +26,9 @@ class DashboardController extends Controller
             'orders'=>$numberOfOrders
         ];
 
-        return view('dashboard')->with(['statistics'=>$statistics]);
+        $plates = Plate::all();
+
+        return view('dashboard')->with(['statistics'=>$statistics,'plates'=>$plates]);
     }
 
     /**
