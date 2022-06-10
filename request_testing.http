@@ -1,2 +1,42 @@
-GET http://localhost:8000/api/plates
+### create order
+
+POST http://iresto.test/api/orders/create
 Content-Type: application/json
+
+{
+  "client_id": 1,
+  "orders": [
+    {
+      "plate_id": 1,
+      "quantity": 2
+    },
+    {
+      "plate_id": 2,
+      "quantity": 4
+    }
+  ]
+}
+
+### Create clients
+
+POST http://iresto.test/api/clients/register
+Content-Type: application/json
+
+{
+  "first_name": "Oussama",
+  "last_name": "ELJABBARI",
+  "gender": "male",
+  "number": "060738363",
+  "email": "work@ojpro.me",
+  "password": "password"
+}
+
+### Login
+
+POST http://iresto.test/api/clients/login
+Content-Type: application/json
+
+{
+  "email": "hey@ojpro.me",
+  "password": "password"
+}

@@ -1,7 +1,7 @@
 <x-dashboard-layout>
     <div class="flex justify-between items-center">
 
-        <h3 class="text-gray-700 text-3xl font-medium">Clients</h3>
+        <h3 class="text-gray-700 text-3xl font-medium">Orders</h3>
 
         <a href=""
            class="bg-blue-500 hover:bg-blue-600/80 shadow-sm hover:shadow rounded px-2 py-1.5 text-white">New Client</a>
@@ -14,41 +14,38 @@
                     <table class="min-w-max w-full table-auto">
                         <thead>
                         <tr class="bg-gray-300 text-gray-600 uppercase text-sm leading-normal rounded">
-                            <th class="py-3 px-6 text-left">Full Name</th>
-                            <th class="py-3 px-6 text-left">number</th>
-                            <th class="py-3 px-6 text-center">gender</th>
-                            <th class="py-3 px-6 text-center">email</th>
+                            <th class="py-3 px-6 text-left">#ID</th>
+                            <th class="py-3 px-6 text-left">Plate ID</th>
+                            <th class="py-3 px-6 text-center">Quantity</th>
+                            <th class="py-3 px-6 text-center">Client ID</th>
                             <th class="py-3 px-6 text-center">Actions</th>
                         </tr>
                         </thead>
                         {{-- TODO: needs more improvement --}}
                         <tbody class="text-gray-600 text-sm font-light">
-                        @foreach($clients as $client)
+                        @foreach($orders as $order)
 
                             <tr class="border-b border-gray-200 hover:bg-gray-100">
                                 <td class="py-3 px-6 text-left whitespace-nowrap">
                                     <div class="flex items-center">
-                                        <div class="mr-2">
-                                            <img class="w-8 h-8 overflow-hidden" src="{{ $client->avatar ?? asset('images/avatar.png') }}" alt="">
-                                        </div>
-                                        <span class="font-medium">{{ $client->first_name . ' ' . $client->last_name }}</span>
+                                        <span class="font-medium">{{ $order->id }}</span>
                                     </div>
                                 </td>
                                 <td class="py-3 px-6 text-left">
-                                    <span>{{ $client->number }}</span>
+                                    <a href="{{ route('plates.edit',$order->plate_id) }}" class="text-blue-400">{{ $order->plate_id }}</a>
                                 </td>
-                                <td class="py-3 px-6">
-                                    {{ $client->gender }}
+                                <td class="text-center">
+                                    {{ $order->quantity }}
                                 </td>
                                 <td class="py-3 px-6 text-center">
                                     <span class="bg-purple-200 text-purple-600 py-1 px-3 rounded-full text-xs">
-                                        {{ $client->email }}
+                                        1
                                     </span>
                                 </td>
                                 <td class="py-3 px-6 text-center">
                                     <div class="flex item-center justify-center">
                                         <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
-                                            <a href="{{ route('plates.edit',$client->id) }}">
+                                            <a href="h">
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                                      stroke="currentColor">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -56,7 +53,7 @@
                                                 </svg>
                                             </a>
                                         </div>
-                                        <form action="{{ route('clients.destroy',$client->id) }}" method="post" class="w-4 mr-2 transform hover:text-red-500 hover:scale-110">
+                                        <form action="h" method="post" class="w-4 mr-2 transform hover:text-red-500 hover:scale-110">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="w-4">
@@ -77,7 +74,7 @@
             </div>
             <div class="mt-2">
 
-                {{ $clients->links() }}
+                {{ $orders->links() }}
             </div>
         </div>
     </div>

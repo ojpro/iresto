@@ -20,7 +20,7 @@ Route::middleware(['auth'])->group(function () {
 	Route::prefix('/dashboard')->group(function () {
 
 		/* Dashboard */
-		Route::view('/','dashboard')->name('dashboard');
+		Route::get('/',[\App\Http\Controllers\DashboardController::class,'index'])->name('dashboard');
 
 		/* Plates */
 		Route::resource('/plates', \App\Http\Controllers\PlateController::class);
@@ -31,7 +31,12 @@ Route::middleware(['auth'])->group(function () {
 		/* Clients */
 		Route::get('/clients',[\App\Http\Controllers\ClientController::class,'index'])->name('clients.index');
 		Route::delete('/clients/{id}',[\App\Http\Controllers\ClientController::class,'delete'])->name('clients.destroy');
-	});
+
+
+        /* Orders */
+        Route::resource('/orders', \App\Http\Controllers\OrderController::class)->except(['create','edit']);
+
+    });
 });
 
 require __DIR__.'/auth.php';

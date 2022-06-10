@@ -29,9 +29,9 @@
             </div>
             <div class="flex flex-wrap gap-1">
                 @foreach($plate->images as $image)
-                    <div class="bg-white shadow rounded p-2 my-2 mx-1 relative h-[25vh] grow group">
+                    <div class="bg-white shadow rounded p-2 my-2 mx-1 relative h-auto grow group max-w-md">
                         <img src="{{ asset($image->image_url) }}" alt=""
-                             class="max-h-full min-w-full align-bottom transition transform group-hover:scale-125">
+                             class="align-bottom transition transform group-hover:scale-[1.05]">
                         <div class="absolute inset-0 bg-gray-900 bg-opacity-10 opacity-0 group-hover:opacity-80 flex justify-center items-center gap-2">
                             <a href="{{ asset($image->image_url) }}" title="Display this image" target="_blank"
                                class="text-white hover:text-blue-400 transition">

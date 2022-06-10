@@ -14,4 +14,9 @@ class OrderController extends Controller
 			'order_details_id'=>$id
 		]);
     }
+
+    public function index(){
+        $orders = Order::paginate(10);
+        return view('pages.orders',['orders'=>$orders]);
+    }
 }

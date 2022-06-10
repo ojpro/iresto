@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Client;
 use App\Models\Order;
-use App\Models\OrderDetail;
+use App\Models\Plate;
 use Illuminate\Http\Request;
 
-class OrderDetailController extends Controller
+class DashboardController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +16,17 @@ class OrderDetailController extends Controller
      */
     public function index()
     {
-        //
+        $numberOfPlate = Plate::count();
+        $numberOfClients = Client::count();
+        $numberOfOrders = Order::count();
+
+        $statistics = [
+            'plates'=>$numberOfPlate,
+            'clients'=>$numberOfClients,
+            'orders'=>$numberOfOrders
+        ];
+
+        return view('dashboard')->with(['statistics'=>$statistics]);
     }
 
     /**
@@ -34,27 +45,9 @@ class OrderDetailController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-
     public function store(Request $request)
     {
-
-		$request->validate([
-			'client_id'=>['required','exists:clients,id'],
-			'orders'=>['required','array']
-		]);
-
-		$order_details = OrderDetail::create([
-			'client_id'=>$request->client_id,
-		]);
-
-		/*
-		 *
-		 * Insert Orders
-		 */
-
-	    foreach($request->orders as $order){
-		    OrderController::store($order, $order_details->id);
-	    }
+        //
     }
 
     /**
