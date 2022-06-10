@@ -149,7 +149,11 @@ class PlateController extends Controller
 	 */
 	public function destroy($id)
 	{
+        $images = PlateImage::where('id',$id)->delete();
+
 		Plate::where('id', $id)->delete();
+
+
 		return redirect()->route('plates.index');
 	}
 
