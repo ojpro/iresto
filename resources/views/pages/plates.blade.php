@@ -28,7 +28,7 @@
                                 <td class="py-3 px-6 text-left whitespace-nowrap">
                                     <div class="flex items-center">
                                         <div class="mr-2">
-                                            <img class="w-8 h-8 overflow-hidden" src="/{{ $plate->thumbnail() ?? '' }}" alt="{{ $plate->name }}">
+                                            <img class="w-8 h-8 overflow-hidden" src="/{{ $plate->thumbnail()  }}" alt="{{ $plate->name }}">
                                         </div>
                                         <span class="font-medium">{{ $plate->name }}</span>
                                     </div>
