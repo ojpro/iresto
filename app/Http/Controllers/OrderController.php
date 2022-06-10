@@ -19,4 +19,10 @@ class OrderController extends Controller
         $orders = Order::paginate(10);
         return view('pages.orders',['orders'=>$orders]);
     }
+
+    public function destroy($id)
+    {
+        Order::where('id', $id)->delete();
+        return redirect()->route('orders.index');
+    }
 }
